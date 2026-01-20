@@ -1,38 +1,203 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
   min-height: 100vh;
+  color: #fff;
+}
+
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  text-align: center;
+  padding: 40px 20px;
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  background: linear-gradient(90deg, #00d4ff, #7b2cbf);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.header p {
+  color: #888;
+  font-size: 1.1rem;
+}
+
+.loading, .error {
+  text-align: center;
+  padding: 60px;
+  font-size: 1.2rem;
+}
+
+.error {
+  color: #ff6b6b;
+}
+
+.matches-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.match-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.match-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 40px rgba(0, 212, 255, 0.15);
+}
+
+.match-date {
+  font-size: 0.85rem;
+  color: #00d4ff;
+  margin-bottom: 5px;
+}
+
+.match-status {
+  font-size: 0.75rem;
+  color: #888;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+.teams {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.team {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex: 1;
+  text-align: center;
 }
 
-.App-link {
-  color: #61dafb;
+.crest {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  margin-bottom: 8px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.team-name {
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.vs {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: bold;
+  padding: 0 10px;
+}
+
+.score {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #00d4ff;
+}
+
+.predict-btn {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(90deg, #7b2cbf, #00d4ff);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.predict-btn:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: scale(1.02);
+}
+
+.predict-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.prediction {
+  margin-top: 15px;
+  padding: 15px;
+  background: rgba(0, 212, 255, 0.1);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.prediction h4 {
+  font-size: 0.8rem;
+  color: #888;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.prediction-result {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #00d4ff;
+  margin-bottom: 5px;
+}
+
+.confidence {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+@media (max-width: 600px) {
+  .header h1 {
+    font-size: 1.8rem;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .matches-grid {
+    grid-template-columns: 1fr;
   }
+}
+
+.predicted-score {
+  font-size: 0.9rem;
+  color: #fff;
+  margin: 8px 0;
+}
+
+.probabilities {
+  display: flex;
+  justify-content: space-around;
+  font-size: 0.75rem;
+  color: #888;
+  margin-top: 8px;
+}
+
+.probabilities span {
+  padding: 4px 8px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 4px;
 }
